@@ -38,13 +38,25 @@ $(document).ready(function() {
 
 //   .replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3")
 
-//버튼클릭시 input에 입력
+// 버튼클릭시 input에 입력
 function touchNumberButton() {
-    $("#tel").val($("#tel").val());
-
+    $("#tel").val(($("#tel").val() + this.value).replace(/(\d{3})(\d)/, "$1-$2").replace(/(\d{7})(\d)/, "$1-$2"));
 }
     
 $(document).ready(function() {
     //버튼의 이벤트 핸들러를 등록한다.
-    $(".btn").click(touchNumberButton).replace(/(\d{3})(\d{4})(\d)/, "$1-$2-$3");
+    $(".btn-success").click(touchNumberButton);
 });
+
+//----------------------------------------------------------------
+
+// C버튼 클릭 시 입력하던 전화번호 전부 삭제
+$(document).ready(function() {
+    // C버튼
+    $(".btn-danger").click(function() {
+        $("#tel").val("");
+    });
+
+    //
+});
+
