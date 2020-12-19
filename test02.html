@@ -1,38 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mileage Manager</title>
 
-        <!-- 부트스트랩 CSS -->
+<head>
+    <!-- 필요한 meta 태그들 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 부트스트랩 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <title>Mileage Manager</title>
     <script src="jquery-3.5.1.min.js"></script>
     <script src="test.js"></script>
     <link rel="stylesheet" href="test.css">
-    
-</head>
-<body>
 
-    <div id="home"></div>
-    <ul id="nav">
-        <li><a class="active" href="#home" data-transition="slideup">NYOUNG Cafe</a></li>
-        <li><a href="#check" data-transition="slideup">구매금액 확인</a></li>
-        <li><a href="#phoneNum" data-transition="slideup">전화번호 입력</a></li>
-        <li><a href="#mileage" data-transition="slideup">마일리지 저장</a></li>
-    </ul>
-    <p class="si">202030122</p>
-    
-    <div id="top">
-        <p id="Welcome">Welcome</p>
-        <p id="to">to</p>
-        <p id="Cafe">NYOUNG Cafe</p>
-    <hr>
+</head>
+
+<body class="">
+<div id="check"> 
+    <!-- <div id="bg"> <img src="unnamed.png" alt=""> </div> -->
+
+    <div id="navCheck">
+        <ul>
+            <li><a href="#home" data-transition="slideup">NYOUNG Cafe</a></li>
+            <li><a class="active"  href="#check" data-transition="slideup">구매금액 확인</a></li>
+            <li><a href="#phoneNum" data-transition="slideup">전화번호 입력</a></li>
+            <li><a href="#mileage" data-transition="slideup">마일리지 저장</a></li>
+        </ul>
+        <p class="si">202030122</p>
+
     </div>
 
+    <div id="price">
+        <p id="amountT">구입금액: <input id="amount" type="text" size="13" placeholder="구입 금액을 확인하세요."></p>
+        <button id="setAmount">결재금액 확인</button>
+    </div>
+
+    <!-- <div id="bottom">
+
+    </div> -->
 </div>
-    
+
+    <!-- 옵션 : 번들패키지로 적용 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </body>
 </html>
