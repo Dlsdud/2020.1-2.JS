@@ -18,23 +18,36 @@
 
 <body class="">
     
-    <div id="bg"> <img src="unnamed.png" alt=""> </div>
+    <!-- <div id="bg"> <img src="unnamed.png" alt=""> </div> -->
 
-    <h1>Mileage Manager</h1>
+   
 
+<div id="home"></div>
+    <ul id="nav">
+        <li><a class="active" href="#home" data-transition="slideup">NYOUNG Cafe</a></li>
+        <li><a href="#check" data-transition="slideup">구매금액 확인</a></li>
+        <li><a href="#phoneNum" data-transition="slideup">전화번호 입력</a></li>
+        <li><a href="#mileage" data-transition="slideup">마일리지 저장</a></li>
+    </ul>
+    <p class="si">202030122</p>
     <div id="top">
-        202030122 최인영
+        <p id="Welcome">Welcome</p>
+        <p id="to">to</p>
+        <p id="Cafe">NYOUNG Cafe</p>
+    <hr>
     </div>
 
+</div>
+<div id="check">
+    <div id="header">
+    <p id="amountT">구입금액: <input id="amount" type="text" size="13" placeholder="구입 금액을 확인하세요."></p>
+    <button id="setAmount">결재금액 확인</button>
+</div>
+<div id="phoneNum">
+    <p id="telT">전화번호: <input id="tel" type="text" size="13"></p>
+    <button id="getTel">결제화면으로</button>
     <hr>
-
-    <p id="amountT">Amount: <input id="amount" type="text" size="13"></p>
-    <button id="setAmount">Check</button>
-
-    <p id="telT">Phone Number: <input id="tel" type="text" size="13"></p>
-    <button id="getTel">Save</button>
-
-    <hr>
+    </div>
 
     <div id="middle">
         <div id="numpad" class="text-center">
@@ -54,19 +67,21 @@
                 <button type="button" value="9" class="btn btn-success">9</button>
             </div>
             <div class="pad d-flex justify-content-between">
-                <button type="button" class="btn btn-danger">B</button>
+                <button type="button" class="btnB btn-danger">B</button>
                 <button type="button" value="0" class="btn btn-success">0</button>
-                <button type="button" class="btn btn-danger">C</button>
+                <button type="button" class="btnC btn-danger">C</button>
             </div>
         </div>
     </div>
+</div>
 
-    <hr>
+<div id="mileage">
 
-    <div id="bottom">
+</div>
+    <!-- <div id="bottom">
 
-    </div>
-
+    </div> -->
+</div>
     <!-- 옵션 : 둘중에 하나 선택해서 적용하기 -->
 
     <!-- 옵션1 : 번들패키지로 적용 -->

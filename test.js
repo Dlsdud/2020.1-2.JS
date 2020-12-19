@@ -53,10 +53,10 @@ $(document).ready(function() {
 // C버튼 클릭 시 입력하던 전화번호 전부 삭제
 $(document).ready(function() {
     // C버튼
-    $(".btn-danger").click(function() {
+    $(".btnC").click(function() {
         $("#tel").val("");
     });
-
-    //
 });
+
+
 
