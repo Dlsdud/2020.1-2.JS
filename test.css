@@ -1,6 +1,7 @@
 body {
     font:1em "맑은 고딕",Cambria,Georgia,sans-serif;
     /* background-color: #333; */
+    background-color: beige;
 }
 h1 {
     text-align: center;
@@ -41,6 +42,10 @@ input {
     font-size: 25px;
 }
 
+#price {
+    margin-top: 100px;
+}
+
 /*구입금액: */
 #amountT {
     text-align: center;
@@ -57,6 +62,7 @@ input {
     left: -90px ;
     top: 0px;
     font-size: 30px;
+    margin-top: 50px;
 }
 
 /*check btn*/
@@ -92,23 +98,23 @@ input {
 }
 
 #numpad {
-    width: 190px;
-    height: 250px;
+    width: 260px;
+    height: 370px;
     padding: 5px;
     background: black;
     position: relative;
-    left: 820px;
+    left: 600px;
 
 }
 
 .pad {
     position: relative;
-    height: 60px;
+    height: 90px;
 }
         
 .pad button{
-    width: 60px;
-    margin: 1px;
+    width: 90px;
+    margin: 2px;
 }
 
 /* #bg { 
@@ -130,35 +136,103 @@ input {
     min-height:50%; 
 } */
 
-ul {
+
+/* test01.html  navHome */
+#navHome ul {
     list-style-type: none;      /*목록에 붙은 ● 모양을 없애줌*/
     margin: 0;
     padding: 0;
     background-color: #333;
 }
-ul:after{
+#navHome ul:after{
     content:'';
     display: block;
     clear:both;
 }
-li {
+#navHome li {
     float: left;                /*메뉴를 왼쪽부터 표시*/
 }
-li a {
+#navHome li a {
     display: block;             /*a링크 요소의 영역을 확장(메뉴칸을 블록레벨로 만든다)*/
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;      /*글자의 밑줄 없애기*/
 }
-li a:hover:not(.active) {
+#navHome li a:hover:not(.active) {
     background-color: #3e9941;
     color: white;
 }
-#nav .active {
+#navHome .active {
     background-color: #df3e3e;
     color: white;
 }
+
+
+/* test02.html  navCheck */
+#navCheck ul {
+    list-style-type: none;      /*목록에 붙은 ● 모양을 없애줌*/
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+#navCheck ul:after{
+    content:'';
+    display: block;
+    clear:both;
+}
+#navCheck li {
+    float: left;                /*메뉴를 왼쪽부터 표시*/
+}
+#navCheck li a {
+    display: block;             /*a링크 요소의 영역을 확장(메뉴칸을 블록레벨로 만든다)*/
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;      /*글자의 밑줄 없애기*/
+}
+#navCheck li a:hover:not(.active) {
+    background-color: #3e9941;
+    color: white;
+}
+#navCheck .active {
+    background-color: #df3e3e;
+    color: white;
+}
+
+
+/* test03.html  navPhone */
+#navPhone ul {
+    list-style-type: none;      /*목록에 붙은 ● 모양을 없애줌*/
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+#navPhone ul:after{
+    content:'';
+    display: block;
+    clear:both;
+}
+#navPhone li {
+    float: left;                /*메뉴를 왼쪽부터 표시*/
+}
+#navPhone li a {
+    display: block;             /*a링크 요소의 영역을 확장(메뉴칸을 블록레벨로 만든다)*/
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;      /*글자의 밑줄 없애기*/
+}
+#navPhone li a:hover:not(.active) {
+    background-color: #3e9941;
+    color: white;
+}
+#navPhone .active {
+    background-color: #df3e3e;
+    color: white;
+}
+
+
 .si {
     font-size: 15px;
     text-align: right;
