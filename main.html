@@ -7,7 +7,8 @@
     <title>Mileage Manager</title>
 
     <!-- 부트스트랩 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <title>Mileage Manager</title>
 
@@ -16,7 +17,11 @@
     <script>
         //적립 정보
         var cDate = new Date();
-
+        
+        var s = JSON.parse(localStorage.getItem($("#tel").val()));
+        var curcount = 0;
+        var curcount = curcount+1;
+        
         //정보 저장 --> local storage에 저장될 데이터
         var mileage = 0; //마일리지
         var telResult; // 전화번호
@@ -27,9 +32,9 @@
         var telArr = [];
 
         //--------------------------------금액--------------------------------
-        $.fn.digits = function() {
+        $.fn.digits = function () {
             // 금액 Formmat
-            return this.each(function() {
+            return this.each(function () {
                 $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             })
         }
@@ -50,22 +55,23 @@
                 console.log(telArr); //로그 확인용
             } else {
                 //나머지 숫자 버튼
-                if(telArr.length < 13){
-                telArr.push(this.value);
-                if (telArr.length == 3 || telArr.length == 8) telArr.push("-");
-                telResult = telArr.join(''); //배열을 toString 하는것(콤마 없애줌)
-                $("#tel").val(telResult);
-                console.log(telArr); //로그 확인용
+                if (telArr.length < 13) {
+                    telArr.push(this.value);
+                    if (telArr.length == 3 || telArr.length == 8) telArr.push("-");
+                    telResult = telArr.join(''); //배열을 toString 하는것(콤마 없애줌)
+                    $("#tel").val(telResult);
+                    console.log(telArr); //로그 확인용
                 }
-                else{
-                    
-                } 
+                else {
+
+                }
             }
         }
 
         //-------------------------------관리자--------------------------------
         function saveData() {
             var preMile = localStorage.getItem(telResult);
+
             console.log(preMile);
             if (preMile == null) {
                 localStorage.setItem(telResult, 0);
@@ -73,13 +79,14 @@
             }
             mileage = parseInt(num * 0.001) + parseInt(preMile);
             //localStorage.setItem(telResult, mileage);
-            localStorage.setItem(telResult, JSON.stringify([cDate,2,3,4,5,6,7]));
+            localStorage.setItem(telResult, JSON.stringify([cDate, curcount, 3, 4, 5, 6, 7]));
+            alert("전화번호: " + telResult + "\n구입해주셔서 감사합니다. 현재까지의 결제 횟수는 " + + "회 이고, 총 마일리지 적립금은 " + + ", 총 구매금액은 " + + ",000원 입니다.")
         }
 
         //-----------------------------이벤트 등록------------------------------
-        $(document).ready(function() {
+        $(document).ready(function () {
             // 금액 random 생성
-            $("#setAmount").click(function() {
+            $("#setAmount").click(function () {
                 num = Math.random() * 100;
                 num = Math.ceil(num) * 1000;
                 $("#amount").val(num).digits();
@@ -95,6 +102,11 @@
     </script>
 
     <style>
+        input {
+            line-height: 30px;
+            font-size: 20px;
+        }
+
         #numpad {
             width: 260px;
             height: 370px;
@@ -112,6 +124,43 @@
             width: 90px;
             margin: 2px;
         }
+
+        /* 금액 확인 부분 */
+        #cash {
+            float: left;
+            width: 700px;
+        }
+
+        /* 전화번호 입력 부분 */
+        #phoneNum {
+            float: left;
+            width: 700px;
+        }
+
+        /* 마일리지 적립 부분 */
+        #administer {
+            float: right;
+            width: 40%;
+            height: 300px;
+        }
+
+        #a1 {
+            float: left;
+        }
+
+        #a2 {
+            float: left;
+        }
+
+        #a3 {
+            float: right;
+        }
+
+        /* 이미지 */
+        #tree {
+            float: right;
+            margin-right: 15%;
+        }
     </style>
 
 </head>
@@ -120,20 +169,43 @@
 
     <div class="container">
 
+        <!-- 금액확인 -->
         <div id="cash" class="my-3 p-3 bg-white rounded shadow-sm">
-            <p>구입금액: <input id="amount" class="input-group mb-3" type="text" size="13" placeholder="구입 금액을 확인하세요."></p>
+            <h1 id="telH1">Mileage Manager</h1>
+            <hr>
+            <p>구입금액: <input id="amount" class="amount input-group mb-3" readonly="true" type="text" size="13"
+                    placeholder="구입 금액을 확인하세요."></p>
             <button id="setAmount" class="btn btn-success">결재금액 확인</button>
         </div>
 
         <hr>
 
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <div id="phoneText">
-                <h1 id="telH1">NYOUNG Cafe</h1>
-                <p id="telT">전화번호: <input id="tel" class="input-group mb-3" type="text" size="13"></p>
-                <!-- <button id="getTel">결제화면으로</button> -->
+
+        <!-- 마일리지 적립 -->
+        <div id="administer" class="my-3 p-3 bg-white rounded shadow-sm d-flex justify-content-between">
+            <!-- <div id="a1">
+                <p>구입금액: <input id="amount1" class="input-group mb-3" readonly="true" type="text" size="13"
+                    placeholder="구입 금액을 확인하세요."></p>
             </div>
-            <div id="middle" class="container d-flex justify-content-center">
+            <br>
+            <div id="a2">
+                <p id="telT">전화번호: <input id="tel1" class="input-group mb-3" readonly="true" type="text" size="13"
+                    placeholder="입력된 전화번호"></p>
+            </div> -->
+            <div id="a3">
+                <button id="saveInfo" class="btn btn-success btn-lg">마일리지 적립</button>
+            </div>
+        </div>
+
+
+        <!-- 전화번호 입력 -->
+        <div id="phoneNum" class="my-3 p-3 bg-white rounded shadow-sm">
+            <div id="phoneText">
+                <p id="telT">전화번호: <input id="tel" class="input-group mb-3" readonly="true" type="text" size="13"
+                        placeholder="전화번호를 입력하세요."></p>
+            </div>
+            <br>
+            <div id="middle" class="container d-flex justify-content-left">
                 <div id="numpad" class="text-center">
                     <div class="pad d-flex justify-content-between">
                         <button type="button" value="1" class="btn btn-success">1</button>
@@ -151,23 +223,24 @@
                         <button type="button" value="9" class="btn btn-success">9</button>
                     </div>
                     <div class="pad d-flex justify-content-between">
-                        <button type="button" value="B" class="btn btn-danger">B</button>
+                        <button type="button" value="B" class="btn btn-danger">X</button>
                         <button type="button" value="0" class="btn btn-success">0</button>
                         <button type="button" value="C" class="btn btn-danger">C</button>
                     </div>
                 </div>
             </div>
+            <br>
+            <!-- input창에 표시된 금액, input창에 표시된 전화번호, 구입 시간 등을 묶어 저장한다. -->
         </div>
-
-        <hr>
-
-        <div id="administer" class="my-3 p-3 bg-white rounded shadow-sm d-flex justify-content-center">
-            <button id="saveInfo" class="btn btn-success">마일리지 적립</button>
-        </div>
-
     </div>
 
-    <!-- 옵션 : 번들패키지로 적용 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <img id="tree" src="pngegg.png">
 
-</body></html>
+    <!-- 옵션 : 번들패키지로 적용 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
