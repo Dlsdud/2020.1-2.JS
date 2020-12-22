@@ -19,7 +19,6 @@
         //적립 정보
         var cDate = new Date();
 
-        var s = JSON.parse(localStorage.getItem($("#tel").val()));
         var curcount = 0;
         var curcount = curcount + 1;
 
@@ -38,6 +37,12 @@
             return this.each(function () {
                 $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             })
+        }
+
+        function ani() {
+            $('#cash').animate({
+                height: '250px'
+            }, 'fast');
         }
 
         //------------------------------전화번호-------------------------------
@@ -92,10 +97,20 @@
                 num = Math.ceil(num) * 1000;
                 $("#amount").val(num).digits();
                 console.log(num);
+            
+                $('#cash').animate({
+                    height: '250px'
+                }, );
+
+                $('#phoneNum').animate({
+                    height: '600px'
+                }, ).delay(100).animate({
+                    opacity: '90%'
+                });
             });
 
             //버튼의 이벤트 핸들러를 등록한다.
-            $(".btn").click(buttonEV);
+            $(".num").click(buttonEV);
 
             //버튼의 이벤트 핸들러를 등록한다.
             $("#saveInfo").click(saveData);
@@ -107,110 +122,109 @@
         @font-face {
             src: url("../JSProject/BMJUA_ttf.ttf");
             font-family: "jua";
+        }
 
+        body {
+            font-family: "jua";
         }
 
         p {
-            font-family: "jua";
-            font-size: 15px;
-        }
-
-        h2 {
-            font-family: "jua";
+            font-size: 20px;
         }
 
         input {
-            line-height: 30px;
+            line-height: 40px;
             font-size: 20px;
         }
 
         #numpad {
-            /* width: 260px;
-            height: 370px;
-            padding: 5px; */
-            width: 40%;
-            height: 3%;
-            padding: 3px;
+            width: 300px;
+            /*300*/
+            height: 373px;
+            /*373*/
+            padding: 5px;
             background: black;
             position: relative;
         }
 
         .pad {
             position: relative;
-            height: 80px;
-            /* height: 90px */
+            height: 91px;
+            /* 91 */
         }
 
         .pad button {
-            width: 90px;
+            width: 91px;
+            /* 91 */
             margin: 2px;
         }
 
         /* 금액 확인 부분 */
         #cash {
-            float: left;
-            /* width: 700px; */
-            width: 50%;
-            height: 10%;
-            margin-left: 5%;
+            position: relative;
+            width: 1300px;
+            height: 800px;
+            /* 250 */
+            opacity: 90%;
+            z-index: 100;
         }
 
         /* 전화번호 입력 부분 */
         #phoneNum {
-            float: left;
-            /* width: 700px; */
-            width: 50%;
-            height: 30%;
-            margin-left: 5%;
+            position: relative;
+            width: 1300px;
+            height: 0px;
+            /* 600 */
+            opacity: 0%;
+            z-index: 1;
         }
 
         /* 마일리지 적립 부분 */
         #administer {
-            float: right;
-            width: 500px;
-            height: 200px;
-            margin-right: 3%;
-        }
-
-        #saveInfo {
-            margin-top: 30%;
+            position: absolute;
+            width: 1300px;
+            height: 800px;
+            opacity: 0%;
+            z-index: 1;
         }
 
         /* 이미지 */
         #tree {
             float: right;
-            /* width: 750px; */
-            width: 20%;
-            margin-top: -20px;
+            width: 750px;
             margin-right: 10%;
         }
+
+        #saveInfo {
+            width: 100%;
+            height: 60px;
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
     </style>
 
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark d-flex justify-content-center">
 
-    <div class="container">
+    <div class="container" ng-app="">
+
+        <br>
+        <br>
+        
+        <div id="hiddenL">
+
+        </div>
 
         <!-- 금액확인 -->
         <div id="cash" class="my-3 p-3 bg-white rounded shadow-sm">
-            <h2 id="telH1">Mileage Manager</h2>
+            <h1 id="telH1">Mileage Manager</h1>
             <hr>
             <p>구입금액: <input id="amount" class="amount input-group mb-3" readonly="true" type="text" size="13"
                     placeholder="구입 금액을 확인하세요."></p>
             <button id="setAmount" class="btn btn-success">결재금액 확인</button>
         </div>
-
-        <hr>
-
-
-        <!-- 마일리지 적립 -->
-        <div id="administer" class="my-3 p-3 bg-white rounded shadow-sm d-flex justify-content-center">
-            <div id="a3">
-                <button id="saveInfo" class="btn btn-success btn-lg">마일리지 적립</button>
-            </div>
-        </div>
-
 
         <!-- 전화번호 입력 -->
         <div id="phoneNum" class="my-3 p-3 bg-white rounded shadow-sm">
@@ -218,7 +232,7 @@
                 <p id="telT">전화번호: <input id="tel" class="input-group mb-3" readonly="true" type="text" size="13"
                         placeholder="전화번호를 입력하세요."></p>
             </div>
-            <div id="middle" class="container d-flex justify-content-left">
+            <div id="middle" class="container d-flex justify-content-center">
                 <div id="numpad" class="text-center">
                     <div class="pad d-flex justify-content-between">
                         <button type="button" value="1" class="btn btn-success">1</button>
@@ -242,13 +256,22 @@
                     </div>
                 </div>
             </div>
-            <br>
             <!-- input창에 표시된 금액, input창에 표시된 전화번호, 구입 시간 등을 묶어 저장한다. -->
+            <br>
+            <div class="container d-flex justify-content-center">
+                <button id="saveInfo" class="btn btn-success btn-lg">마일리지 적립</button>
+            </div>
         </div>
+
+        <!-- 마일리지 적립 -->
+        <div id="administer" class="my-3 p-3 bg-white rounded shadow-sm d-flex justify-content-center">
+
+        </div>
+
     </div>
 
     <!-- <img id="tree" src="pngegg.png"> -->
-    <img id="tree" src="ppp.png">
+    <!-- <img id="tree" src="ppp.png"> -->
 
     <!-- 옵션 : 번들패키지로 적용 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
