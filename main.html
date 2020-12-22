@@ -9,6 +9,7 @@
     <!-- 부트스트랩 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" media="screen" href="style.css" />
 
     <title>Mileage Manager</title>
 
@@ -17,11 +18,11 @@
     <script>
         //적립 정보
         var cDate = new Date();
-        
+
         var s = JSON.parse(localStorage.getItem($("#tel").val()));
         var curcount = 0;
-        var curcount = curcount+1;
-        
+        var curcount = curcount + 1;
+
         //정보 저장 --> local storage에 저장될 데이터
         var mileage = 0; //마일리지
         var telResult; // 전화번호
@@ -99,11 +100,16 @@
             //버튼의 이벤트 핸들러를 등록한다.
             $("#saveInfo").click(saveData);
         });
+
     </script>
 
     <style>
+        p {
+            font-size: 20px;
+        }
+
         input {
-            line-height: 30px;
+            line-height: 40px;
             font-size: 20px;
         }
 
@@ -135,25 +141,18 @@
         #phoneNum {
             float: left;
             width: 700px;
+            height: 600px;
         }
 
         /* 마일리지 적립 부분 */
         #administer {
             float: right;
-            width: 40%;
-            height: 300px;
+            width: 500px;
+            height: 200px;
         }
 
-        #a1 {
-            float: left;
-        }
-
-        #a2 {
-            float: left;
-        }
-
-        #a3 {
-            float: right;
+        #saveInfo {
+            margin-top: 30%;
         }
 
         /* 이미지 */
@@ -182,16 +181,7 @@
 
 
         <!-- 마일리지 적립 -->
-        <div id="administer" class="my-3 p-3 bg-white rounded shadow-sm d-flex justify-content-between">
-            <!-- <div id="a1">
-                <p>구입금액: <input id="amount1" class="input-group mb-3" readonly="true" type="text" size="13"
-                    placeholder="구입 금액을 확인하세요."></p>
-            </div>
-            <br>
-            <div id="a2">
-                <p id="telT">전화번호: <input id="tel1" class="input-group mb-3" readonly="true" type="text" size="13"
-                    placeholder="입력된 전화번호"></p>
-            </div> -->
+        <div id="administer" class="my-3 p-3 bg-white rounded shadow-sm d-flex justify-content-center">
             <div id="a3">
                 <button id="saveInfo" class="btn btn-success btn-lg">마일리지 적립</button>
             </div>
