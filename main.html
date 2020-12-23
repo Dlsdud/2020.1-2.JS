@@ -77,10 +77,7 @@
 
         //-------------------------------관리자--------------------------------
         function saveData() {
-
-            var curcount = 1;   //적립횟수
-            var sumPrice;
-            var sumMile;
+            telArr = (0, 0, 0, 0, 0, 0, 0);
 
             var preMile = localStorage.getItem(telResult);
 
@@ -91,24 +88,28 @@
             }
             mileage = parseInt(num * 0.001) + parseInt(preMile);
 
-
             if ($("#amount").val() == 0 || $("#tel").val().length == 0) {
                 alert("빈칸을 채워주십시오.");
             } else {
-                var a = localStorage.getItem("curcount");
-                var b = localStorage.getItem("sumPrice");
-                var c = localStorage.getItem("sumMile");
-                curcount = 1 + a.curcount;
-                sumPrice = num + b.sumPrice;
-                sumMile = mileage + c.sumMile;
+                if(localStorage.getItem(telResult) == null) {
+                    alert(telResult + "고객님, 첫구매 감사합니다!");
+                    localStorage.setItem(telResult, JSON.stringify([cDate.toLocaleString(), Count, Price, Mile]));
+                    alert("현재까지의 결제횟수는 " + Count + "회 이고, 총 구매금액은 " + Price + "원 입니다.");
+                    $("#tel").val("");
+                    $("#amount").val("");
+                } else {
+                    curcount = curcount + parseInt(preMile);
+                    sumPrice = sumPrice + parseInt(preMile);
+                    sumMile = sumMile + parseInt(preMile);
 
 
 
-                localStorage.setItem(telResult, JSON.stringify([cDate.toLocaleString(), curcount, sumPrice, sumMile ]));
-                alert("전화번호: " + telResult + "\n구입해주셔서 감사합니다. \n현재까지의 결제 횟수는 " + curcount + "회 이고, 총 구매금액은 " + sumPrice + "원 입니다.");
-                $("#tel").val("");
-                $("#amount").val("");
-                //결재횟수, 총 구매금액
+                    localStorage.setItem(telResult, JSON.stringify([cDate.toLocaleString(), curcount, sumPrice, sumMile]));
+                    alert("전화번호: " + telResult + "\n구입해주셔서 감사합니다. \n현재까지의 결제 횟수는 " + curcount + "회 이고, 총 구매금액은 " + sumPrice + "원 입니다.");
+                    $("#tel").val("");
+                    $("#amount").val("");
+                    //결재횟수, 총 구매금액
+                }
             }
         }
         //localStorage.setItem(telResult, mileage);
