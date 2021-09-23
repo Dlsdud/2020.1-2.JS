@@ -1,13 +1,13 @@
 # 웹개발기초II 프로젝트
 ***
 
+<h3>📌ReadMe📌</h3>
+https://plastic-spaghetti-ffc.notion.site/b35399a238fe428ba7ff9106f5d3e20a
+
 * 실행해야 할 파일
  - 결과물을 제대로 보실려면 **JSProject.zip**파일을 전부 압축해제하여 한 폴더(폴더명: JSProject)에 넣으셔야 합니다. ((진짜진짜 최종) 웹개발기초II 기말과제 입니다.) 이것입니다.
  - 폴더명을 JSProject로 한 이유는 폰트 적용을 위해서 입니다.
  - 폴더에 들어있는 파일들 중 **main.html**을 실행하시면 됩니다.
-
-<h2>📌ReadMe📌</h2>
-https://plastic-spaghetti-ffc.notion.site/b35399a238fe428ba7ff9106f5d3e20a
 
 ***
 
