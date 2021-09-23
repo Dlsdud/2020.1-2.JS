@@ -30,7 +30,9 @@ https://plastic-spaghetti-ffc.notion.site/b35399a238fe428ba7ff9106f5d3e20a
   
 <br>
 
-* 메인화면
+------------
+
+### 메인화면
 
 ![image](https://user-images.githubusercontent.com/65286862/134458356-11e19c18-70cf-4299-b74e-b2c7db56a97b.png)
   
