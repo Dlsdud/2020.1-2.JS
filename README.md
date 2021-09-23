@@ -6,6 +6,9 @@
  - 폴더명을 JSProject로 한 이유는 폰트 적용을 위해서 입니다.
  - 폴더에 들어있는 파일들 중 **main.html**을 실행하시면 됩니다.
 
+<h2>📌ReadMe📌</h2>
+https://plastic-spaghetti-ffc.notion.site/b35399a238fe428ba7ff9106f5d3e20a
+
 ***
 
 * 기능 안내
